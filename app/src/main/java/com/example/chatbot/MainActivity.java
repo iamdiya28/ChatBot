@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+//import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private EditText editText;
-    private FloatingActionButton floatingActionButton;
+    private Button btn;
     private final String bot_key="bot";
     private final String user_key="user";
     private ArrayList<chatModel>chatModelArrayList;
@@ -39,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView=findViewById(R.id.chats);
         editText=findViewById(R.id.editmessage);
-        floatingActionButton=findViewById(R.id.button);
+        btn=findViewById(R.id.button);
         chatModelArrayList=new ArrayList<>();
         chatAdapter= new chatAdapter(chatModelArrayList,this);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(chatAdapter);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(editText.getText().toString().isEmpty()){
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     chatModelArrayList.add(new chatModel(msgmodel1.getCnt(), bot_key));
                     chatAdapter.notifyDataSetChanged();
                 }
+
             }
 
             @Override
